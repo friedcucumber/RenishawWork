@@ -32,7 +32,7 @@ threenumbers:Tthreenumbers;
 enviroment:TEnviroment;
 
 i:byte;
-runcountloop:Smallint;
+runcountloop, targetcountloop:Smallint;
 begin
  filetypeheader:=rtl;
  owner:=toLinear;
@@ -67,15 +67,14 @@ end;
 runs.runcount:=2;
 runcountloop:=runs.runcount;
 
-//SetLength(deviations,targetdata.targetcount*runs.runcount,3);
+SetLength(deviations,runs.runcount, targetdata.targetcount);
 
-{  setLength(deviations, runs.runcount, targetdata.targetcount);
 for runcountloop:=0 to runs.runcount-1 do
-for targetdata.targets:=0 to targetdata.targetcount-1 do
+for targetcountloop:=0 to targetdata.targetcount-1 do
 begin
-deviations[runs.runcount,targetdata.target].targetnumber:=target;
-deviations[runs.runcount,targetdata.target].deviation:=random*20-10;
-end;  }
+ deviations[runcountloop,targetcountloop].targetnumber:=targetcountloop;
+ deviations[runcountloop,targetcountloop].deviation:=random*20-10;
+end;
 
 with enviroment do
 begin
